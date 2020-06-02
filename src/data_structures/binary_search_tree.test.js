@@ -104,18 +104,27 @@ dataStructures.forEach(TargetDS => {
 
     describe('delete', () => {
       it('returns the value for the removed record', () => {
+        bst.insert('test', 'first value');
+        bst.insert('two', 'second value');
 
+        expect(bst.delete('test')).toBe('first value');
       });
 
       it('returns undefined if the record was not found', () => {
-
+        bst.insert('test', 'first value');
+        expect(bst.delete('blerg')).toBe(undefined);
       });
 
       it('reduces the count by 1', () => {
-
+        bst.insert('test', 'first value');
+        expect(bst.count()).toBe(1);
+        bst.delete('test');
+        expect(bst.count()).toBe(0);
       });
 
       it('omits the removed record from iteration results', () => {
+        bst.insert('first', 'first value');
+        bst.insert('second', 'first value');
 
       });
 
